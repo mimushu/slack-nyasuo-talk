@@ -21,7 +21,7 @@ class SampleController < ApplicationController
 
 
 
-  uri  = URI.parse('https://hooks.slack.com/services/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')
+  uri  = URI.parse('https://hooks.slack.com/services/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')
   # params = { text: "hogehoge" }
   params = { text: nyasuo_responce }
   http = Net::HTTP.new(uri.host, uri.port)
