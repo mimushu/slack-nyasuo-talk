@@ -22,10 +22,11 @@ class SampleController < ApplicationController
 
 #userlocal api
 
-  url = URI.encode("https://chatbot-api.userlocal.jp/api/chat?message=#{person_speech}\&key=3ea2967872071fbbe2c4")
+  url = URI.encode("https://chatbot-api.userlocal.jp/api/chat?message=#{person_speech}&key=3ea2967872071fbbe2c4")
   # response = Net::HTTP.get_response(URI.parse(url))
   response = `curl #{url} `
-  nyasuo_response = response[:result]
+  response_json = response.to_json
+  nyasuo_response = JSON.parse(response_json)[:result]
 
   uri  = URI.parse('https://hooks.slack.com/services/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')
   params = { text: url }
