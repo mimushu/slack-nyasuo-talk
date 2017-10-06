@@ -4,17 +4,17 @@ class SampleController < ApplicationController
   require 'json'
   def nyasuo_talk
     # person_speech = params[:text]
-    person_speech = "年齢はおいくつですか？"
+    person_speech = params[:text]
 
     value = `curl -X POST https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk \
 -F "apikey=ljwzlxEfZoYpKWzQfVQxOBZPpo1DquR8" \
 -F "query=#{person_speech}"`
 
-  # nyasuo_responce = "#{eval(value)[:results][0][:reply]}".to_s
-   puts "paramsの内容はこちらです#{params[:attachments][0][:text]}"
+  nyasuo_responce = "#{eval(value)[:results][0][:reply]}".to_s
+  #  puts "paramsの内容はこちらです#{params[:attachments][0][:text]}"
    # コメント
 
-   nyasuo_responce = "今日もかわいいね"
+  #  nyasuo_responce = "今日もかわいいね"
 
   # input_text = nyasuo_responce.to_s unless nyasuo_responce.kind_of?(String)
   uri  = URI.parse('https://hooks.slack.com/services/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')
