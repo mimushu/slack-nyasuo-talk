@@ -12,10 +12,10 @@ class SampleController < ApplicationController
 
   nyasuo_responce = "#{eval(value)[:results][0][:reply]}"
 
-  input_text = nyasuo_responce.to_s unless nyasuo_responce.kind_of?(String)
+  # input_text = nyasuo_responce.to_s unless nyasuo_responce.kind_of?(String)
   uri  = URI.parse('https://hooks.slack.com/services/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')
   # params = { text: "hogehoge" }
-  params = { text: input_text }
+  params = { text: nyasuo_responce }
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   http.start do
