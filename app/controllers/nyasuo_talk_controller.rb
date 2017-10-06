@@ -24,7 +24,7 @@ class SampleController < ApplicationController
 
   url = URI.encode("https://chatbot-api.userlocal.jp/api/chat?message=おはよう&key=3ea2967872071fbbe2c4")
   # response = Net::HTTP.get_response(URI.parse(url))
-  response = `curl #{url} `
+  response = Net::HTTP.get_response(URI.parse(url))
   response_json = response.to_json
   nyasuo_response = JSON.parse(response_json)[:result]
 
