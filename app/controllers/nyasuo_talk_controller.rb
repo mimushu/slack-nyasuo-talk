@@ -18,7 +18,7 @@ class SampleController < ApplicationController
 #simsim api
   response = Net::HTTP.get_response(URI.escape("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おっぱい大好き？"))
   # value = `curl -X GET http://sandbox.api.simsimi.com/request.p\?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おはよう" `
-  nyasuo_response = response
+  nyasuo_response = response[:response]
 
 
 #post to slack
