@@ -16,9 +16,9 @@ class SampleController < ApplicationController
 #   nyasuo_response = "#{eval(value)[:results][0][:reply]}".to_s
 
 #simsim api
-  # response = Net::HTTP.get_response(URI.parse("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=#{Kconv.tosjis("おっぱい大好き？")}"))
-  value = `curl -X GET http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2\&lc=ja\&text=#{"おっぱい大好き？".encode("UTF-8").to_s} `
-  nyasuo_response = value
+  response = Net::HTTP.get_response(URI.escape("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おっぱい大好き？"))
+  # value = `curl -X GET http://sandbox.api.simsimi.com/request.p\?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おはよう" `
+  nyasuo_response = response
 
 
 #post to slack
