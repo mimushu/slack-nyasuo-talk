@@ -26,7 +26,7 @@ class SampleController < ApplicationController
   # response = Net::HTTP.get_response(URI.parse(url))
   response = Net::HTTP.get_response(URI.parse(url))
   response_json = response.to_json
-  nyasuo_response = JSON.parse(response_json)[:result]
+  nyasuo_response = JSON.parse(response_json)[:status]
 
 
 
