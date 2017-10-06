@@ -16,13 +16,13 @@ class SampleController < ApplicationController
 
 #simsim api
   # response = Net::HTTP.get_response(URI.parse(URI.escape("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おっぱい大好き？")))
-  # # value = `curl -X GET http://sandbox.api.simsimi.com/request.p\?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おはよう" `
+  # # value = `curl http://sandbox.api.simsimi.com/request.p\?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=おはよう" `
   # nyasuo_response = response[:response]
 
 
 #userlocal api
 
-  url = URI.encode("https://chatbot-api.userlocal.jp/api/chat?message=#{person_speech}&key=3ea2967872071fbbe2c4")
+  url = URI.encode("https://chatbot-api.userlocal.jp/api/chat?message=#{person_speech}\&key=3ea2967872071fbbe2c4")
   # response = Net::HTTP.get_response(URI.parse(url))
   response = `curl #{url} `
   nyasuo_response = response[:result]
