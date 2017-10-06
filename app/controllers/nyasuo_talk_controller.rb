@@ -5,7 +5,7 @@ class SampleController < ApplicationController
   def nyasuo_talk
     # person_speech = params[:text]
     person_speech = params[:text]
-    person_speech.delete!("にゃすお！")
+    person_speech.slice!("にゃすお！")
 
     value = `curl -X POST https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk \
 -F "apikey=ljwzlxEfZoYpKWzQfVQxOBZPpo1DquR8" \
