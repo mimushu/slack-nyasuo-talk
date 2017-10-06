@@ -22,7 +22,7 @@ class SampleController < ApplicationController
 
 #userlocal api
 
-  url = URI.encode("https://chatbot-api.userlocal.jp/api/chat?message=おはよう&key=3ea2967872071fbbe2c4")
+  url = "https://chatbot-api.userlocal.jp/api/chat?message=おはよう&key=3ea2967872071fbbe2c4")
   # response = Net::HTTP.get_response(URI.parse(url))
   response = Net::HTTP.get(URI.parse(url))
   response_json = response.to_json
