@@ -12,6 +12,7 @@ class SampleController < ApplicationController
 
   # nyasuo_responce = "#{eval(value)[:results][0][:reply]}".to_s
    puts "paramsの内容はこちらです#{params[:attachments][0][:text]}"
+   #コメント
 
    nyasuo_responce = "今日もかわいいね"
 
