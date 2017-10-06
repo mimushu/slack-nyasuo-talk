@@ -7,16 +7,23 @@ class SampleController < ApplicationController
     person_speech = params[:text]
     person_speech.slice!("にゃすお！")
 
-    value = `curl -X POST https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk \
--F "apikey=ljwzlxEfZoYpKWzQfVQxOBZPpo1DquR8" \
--F "query=#{person_speech}"`
+#recruit api
 
-  nyasuo_responce = "#{eval(value)[:results][0][:reply]}".to_s
+#     value = `curl -X POST https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk \
+# -F "apikey=ljwzlxEfZoYpKWzQfVQxOBZPpo1DquR8" \
+# -F "query=#{person_speech}"`
+#
+#   nyasuo_response = "#{eval(value)[:results][0][:reply]}".to_s
+
+#simsim api
+  response = Net::HTTP.get_response(URI.parse("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=#{person_speech}"))
+  nyasuo_response = response[:response]
 
 
+#post to slack
   uri  = URI.parse('https://hooks.slack.com/services/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')
   # params = { text: "hogehoge" }
-  params = { text: nyasuo_responce }
+  params = { text: nyasuo_response }
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   http.start do
