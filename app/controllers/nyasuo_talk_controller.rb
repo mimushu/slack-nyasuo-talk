@@ -28,15 +28,7 @@ class SampleController < ApplicationController
   response_json = response.to_json
   nyasuo_response = JSON.parse(response_json)[:result]
 
-  uri  = URI.parse('https://hooks.slack.com/services/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')
-  params = { text: url }
-  http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = true
-  http.start do
-    request = Net::HTTP::Post.new(uri.path)
-    request.set_form_data(payload: params.to_json)
-    http.request(request)
-  end
+
 
 #post to slack
   uri  = URI.parse('https://hooks.slack.com/services/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')
