@@ -2,6 +2,7 @@ class SampleController < ApplicationController
   require 'net/http'
   require 'uri'
   require 'json'
+  require 'kconv'
   def nyasuo_talk
     # person_speech = params[:text]
     person_speech = params[:text]
@@ -16,7 +17,7 @@ class SampleController < ApplicationController
 #   nyasuo_response = "#{eval(value)[:results][0][:reply]}".to_s
 
 #simsim api
-  response = Net::HTTP.get_response(URI.parse("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=#{person_speech}"))
+  response = Net::HTTP.get_response(URI.parse("http://sandbox.api.simsimi.com/request.p?key=6aea4fbd-7813-496f-9526-c1b0b5cfc9f2&lc=ja&text=#{Kconv.tosjis("おっぱい大好き？")}"))
   nyasuo_response = response[:response]
 
 
