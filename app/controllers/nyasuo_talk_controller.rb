@@ -2,7 +2,7 @@ class SampleController < ApplicationController
   require 'net/http'
   require 'uri'
   require 'json'
-  def nyasuo_bot
+  def nyasuo_talk
     # person_speech = params[:text]
     person_speech = "年齢はおいくつですか？"
 
