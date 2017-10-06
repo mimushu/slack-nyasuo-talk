@@ -10,7 +10,7 @@ class SampleController < ApplicationController
 -F "apikey=ljwzlxEfZoYpKWzQfVQxOBZPpo1DquR8" \
 -F "query=#{person_speech}"`
 
-  nyasuo_responce = "#{eval(value)[:results][0][:reply]}"
+  nyasuo_responce = "#{eval(value)[:results][0][:reply]}".to_s
 
   # input_text = nyasuo_responce.to_s unless nyasuo_responce.kind_of?(String)
   uri  = URI.parse('https://hooks.slack.com/services/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')
@@ -23,7 +23,7 @@ class SampleController < ApplicationController
     request.set_form_data(payload: params.to_json)
     http.request(request)
   end
-  return input_text
+  return nyasuo_responce
 
   end
 end
