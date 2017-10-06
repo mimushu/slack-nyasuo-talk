@@ -11,7 +11,7 @@ class SampleController < ApplicationController
 -F "query=#{person_speech}"`
 
   # nyasuo_responce = "#{eval(value)[:results][0][:reply]}".to_s
-  nyasuo_responce = params
+  nyasuo_responce = params[:attachments][0][:text].to_s
 
   # input_text = nyasuo_responce.to_s unless nyasuo_responce.kind_of?(String)
   uri  = URI.parse('https://hooks.slack.com/services/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')
