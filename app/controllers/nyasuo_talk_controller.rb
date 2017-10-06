@@ -26,6 +26,16 @@ class SampleController < ApplicationController
   response = Net::HTTP.get_response(URI.parse(url))
   nyasuo_response = response[:result]
 
+  uri  = URI.parse('https://hooks.slack.com/services/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')
+  params = { text: url }
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.start do
+    request = Net::HTTP::Post.new(uri.path)
+    request.set_form_data(payload: params.to_json)
+    http.request(request)
+  end
+
 #post to slack
   uri  = URI.parse('https://hooks.slack.com/services/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')
   params = { text: nyasuo_response }
@@ -36,7 +46,7 @@ class SampleController < ApplicationController
     request.set_form_data(payload: params.to_json)
     http.request(request)
   end
-  return nyasuo_responce
+  return nyasuo_response
 
   end
 end
