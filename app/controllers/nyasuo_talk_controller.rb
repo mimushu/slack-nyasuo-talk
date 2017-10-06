@@ -18,6 +18,20 @@ class SampleController < ApplicationController
   #  nyasuo_responce = "今日もかわいいね"
 
   # input_text = nyasuo_responce.to_s unless nyasuo_responce.kind_of?(String)
+
+  uri  = URI.parse('https://hooks.slack.com/services/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')
+  # params = { text: "hogehoge" }
+  params = { text: person_speech }
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.start do
+    request = Net::HTTP::Post.new(uri.path)
+    request.set_form_data(payload: params.to_json)
+    http.request(request)
+  end
+
+
+
   uri  = URI.parse('https://hooks.slack.com/services/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')
   # params = { text: "hogehoge" }
   params = { text: nyasuo_responce }
